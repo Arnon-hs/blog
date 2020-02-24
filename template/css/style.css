@@ -44,6 +44,10 @@ max-width: 768px;
     width: 100%;
     height: 100%;
 } */
+.div-input{
+    display:none;
+    height: auto;
+}
 .logo{
     height: 50px;
     width: auto;
@@ -105,10 +109,18 @@ max-width: 768px;
 	top: 0;
 	z-index: 100;
 }
+#textarea-add{
+    min-height: 200px;
+}
+.color-button{
+    height: 100%;
+}
 header{
     width: 100%;
     top:0px;
-    background-color: rgb(38, 50, 59);
+    background-color: #1D4E89;
+    padding-bottom: 0.5rem ;
+    padding-top: 0.5rem;
 }
 header a{
     color: white;

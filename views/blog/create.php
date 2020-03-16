@@ -1,5 +1,26 @@
 <?php include ROOT . '/views/layouts/header.php'; ?>
+<div id="editorjs"></div>
 
+<button id="save-button">Save</button>
+<pre id="output"></pre>
+
+<script>
+    const editor = new EditorJS({
+      autofocus: true,
+      tools: {
+        image: SimpleImage
+      }
+    });
+
+    const saveButton = document.getElementById('save-button');
+    const output = document.getElementById('output');
+
+    saveButton.addEventListener('click', () => {
+      editor.save().then( savedData => {
+        output.innerHTML = JSON.stringify(savedData, null, 4);
+      })
+    })
+</script>
 <div class="content">
 
     <?php if (isset($errors) && is_array($errors)): ?>
@@ -48,7 +69,7 @@
                                 </div>
                             </fieldset>
 
-                            <p>Статус</p><br>
+                            <p>Статус</p>
                             <select name="status" class="form-control mb-4">
                                 <option value="1" selected="selected">Отображается</option>
                                 <option value="0">Скрыт</option>

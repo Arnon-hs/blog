@@ -6,27 +6,36 @@ class Blog
     
     public static function getBlogItemById($id)
     {
-        $id = intval($id);
-
+        //$id = intval($id);
+        
         if ($id) {
-                        
             $db = Db::getConnection();
-            
-            $result = $db->query('SELECT * FROM posts WHERE id_post=' . $id);
-            $result->setFetchMode(PDO::FETCH_ASSOC);
-            
-            $blogItem = $result->fetch();
-
+            $collection = $db->posts;
+            $post = array(
+                '_id' => $id
+            );
+            $blogItem = $collection->findOne($post);
+            var_dump($blogItem);
             return $blogItem;
         }
+        // if ($id) {                        
+        //     $db = Db::getConnection();
+        //     $collection = $db->users;
+        //     $user = array(
+        //         '_id' => $id
+        //     );
+        //     $cursor=$collection->findOne($user);
+        //     return $cursor;
+        // }
     }
 
     
     public static function getBlogList() {
- 
         $db = Db::getConnection();
         $collection = $db->posts;
-        $blogList=$collection->find();
+        $filter = [];
+        $options = ['sort'=>['timestamp' => -1]];
+        $blogList = $collection->find($filter,$options);//reverse need [],$options
         return $blogList;
     }
 

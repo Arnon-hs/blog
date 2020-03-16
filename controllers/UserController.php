@@ -2,7 +2,7 @@
 
 class UserController
 {
-
+    
     public function actionRegister()
     {
         $name = '';

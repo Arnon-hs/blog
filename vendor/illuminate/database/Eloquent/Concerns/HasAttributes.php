@@ -773,7 +773,7 @@ trait HasAttributes
         // If this value is already a Carbon instance, we shall just return it as is.
         // This prevents us having to re-instantiate a Carbon instance when we know
         // it already is one, which wouldn't be fulfilled by the DateTime check.
-        if ($value instanceof Carbon || $value instanceof CarbonInterface) {
+        if ($value instanceof CarbonInterface) {
             return Date::instance($value);
         }
 
@@ -974,25 +974,6 @@ trait HasAttributes
 
         if ($sync) {
             $this->syncOriginal();
-        }
-
-        return $this;
-    }
-
-    /**
-     * Set the model attribute. No checking is done.
-     *
-     * @param  string  $key
-     * @param  mixed $value
-     * @param  bool  $sync
-     * @return $this
-     */
-    public function setRawAttribute($key, $value, $sync = false)
-    {
-        $this->attributes[$key] = $value;
-
-        if ($sync) {
-            $this->syncOriginalAttribute($key);
         }
 
         return $this;

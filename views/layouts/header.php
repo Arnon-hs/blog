@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,9 +9,10 @@
   <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
   <link rel="stylesheet" href="/template/css/style.css">
   <link rel="shortcut icon" href="/template/images/icons/ico.png" type="image/png">
-  <title>Мой блог</title>
-
+  <title><?= $title? $title:'Мой блог';?></title>
   <script src="/template/js/script.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest"></script> -->
+  <!-- <script src="https://cdn.ckeditor.com/ckeditor5/17.0.0/classic/ckeditor.js"></script> -->
   <script>
       window.onload = function () {
         document.body.classList.add('loaded_hiding');
@@ -32,20 +32,31 @@
           </path>
         </svg>
     </div>
-  
-    <header>
-    <div class="pure-g">
-        <div class="logo pure-u-1-5">
-          <a href="/"><img type="image/png" src="/template/images/icons/ico.png" alt="Логотип"></a>
+  <div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1-4 pure-u-md-1-4">
+        <div class="login">
+          <nav class="nav">
+            <ul class="nav-list">
+              <?php if(User::isGuest()): ?>
+                <li class="nav-item">
+                    <a class="pure-button" href="/user/login/">Войти</a>
+                </li>
+              <?php else: ?>
+                <li class="nav-item">
+                    <a class="pure-button" href="/cabinet/">Аккаунт</a>
+                </li>
+                <li class="nav-item">
+                    <a class="pure-button" href="/post/create/">Добавить пост</a>
+                </li>
+                <li class="nav-item">
+                    <a class="pure-button" href="/user/logout/">Выход</a>
+                </li>
+              <?php endif; ?>
+            </ul>
+          </nav>
         </div>
-        <div class="login pure-u-2-5">
-          <?php if(User::isGuest()): ?>
-          <a href="/user/login/"> Войти</a>
-          <?php else: ?>
-          <a href="/cabinet/"><img src="/template/images/icons/icons8-account-50.png"> Аккаунт</a>
-          <a href="/user/logout/"><img src="/template/images/icons/icons8-login-rounded-50.png"> Выход</a>
-          <?php endif; ?>
+        <div class="header">
+          <a href="/"><h1 class="brand-title">Блог разработчика</h1></a>
+          <h2 class="brand-tagline">Web-приложений</h2>
         </div>
     </div>
-    </header>
-    <div class="wrapper container">

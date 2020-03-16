@@ -12,7 +12,6 @@ class User
             'password' => $password
         );
         return $collection->insertOne($user);
-        
     }
     
     /**
@@ -106,30 +105,38 @@ class User
     }
     public static function getUserById($id)
     {
-
         if ($id) {                        
             $db = Db::getConnection();
             $collection = $db->users;
             $user = array(
-                '_id' => $id
+                '_id' => new MongoDB\BSON\ObjectId($id)
             );
-            $cursor=$collection->findOne($user);
+            $cursor = $collection->findOne($user);
             return $cursor;
         }
     }
-    public static function edit($id, $name, $password)//
+    public static function edit($id=null, $name=null, $password=null)//todo update
     {       
             $db = Db::getConnection();
-            $sql="UPDATE users SET name= :name, password= :password WHERE id_user= :id_user";
-            $result = $db->prepare($sql);
-            $result->bindParam(':id', $id, PDO::PARAM_INT);
-            $result->bindParam(':name', $name, PDO::PARAM_STR);
-            $result->bindParam(':password', $password, PDO::PARAM_STR);
-            //получаем массив
-            $result->setFetchMode(PDO::FETCH_ASSOC);
-            return $result->execute();
-
-            
+            $collection = $db->users;
+            $updateResult = $collection->updateOne(
+                [ '_id' => new MongoDB\BSON\ObjectId($id) ],
+                [ '$set' => [ 'name' => "$name" ]]
+            );
+            printf("Matched %d document(s)\n", $updateResult->getMatchedCount());
+            printf("Modified %d document(s)\n", $updateResult->getModifiedCount());
+            return $updateResult;
     }
-    
+    public static function delete($id)
+    {
+        try{
+            $db = Db::getConnection();
+            $collection = $db->users;
+            $deleteResult = $collection->deleteOne(['_id' => new MongoDB\BSON\ObjectId($id)]);
+            return true;
+        }
+        catch(Exception $e){
+            return 'Ошибка: '. $e;
+        }
+    }
 }

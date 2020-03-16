@@ -6,7 +6,6 @@ class BlogController
     public function actionIndex()
     {
         $blogList = Blog::getBlogList();
-
         require_once(ROOT . '/views/blog/index.php');
 
         return true;
@@ -32,7 +31,7 @@ class BlogController
             // Если форма отправлена
             // Получаем данные из формы
             $label = $_POST['label'];
-            $text = $_POST['text'];
+            $text =  $_POST['text'];
             $status = $_POST['status'];
             $userId= User::checkLogged();
             $errors = false;
@@ -63,7 +62,7 @@ class BlogController
         }
 
         // Подключаем вид
-        require_once(ROOT . '/views/blog/create.php');
+        require_once(ROOT . '/views/blog/createnew.php');
         return true;
     }
 }

@@ -7,6 +7,8 @@ class SiteController
     {
         $cursor=User::findAllUser();
         $posts = Blog::getBlogList();
+        // Functions::dd($posts);
+        // $posts = array_reverse($posts);
         require_once(ROOT . '/views/site/index.php');
         return true;
     }

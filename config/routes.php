@@ -3,7 +3,7 @@
 return array(
     // Админпанель:
     'admin' => 'admin/index',
-    // Товар
+    // Post
     'blog/([0-9]+)' => 'blog/view/$1', // actionView в BlogController
     // Каталог
     'catalog' => 'catalog/index', // actionIndex в CatalogController
@@ -16,5 +16,8 @@ return array(
     'cabinet' => 'cabinet/index',
     //blog
     'post/create' => 'blog/create',
+    //api
+    'api/post/([a-z]+)' => 'api/blog/$1',//доделать апи!!!!!!!!!!![0-9]+
+    'api/users/([a-z]+)' => 'api/users/$1', //actionUsers ApiController
     '' => 'site/index', // actionIndex в SiteController
 );

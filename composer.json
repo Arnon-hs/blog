@@ -1,6 +1,17 @@
 {
     "require": {
         "mongodb/mongodb": "^1.5",
-        "jenssegers/mongodb": "^3.6"
+        "jenssegers/mongodb": "^3.6",
+        "nyholm/psr7": "^1.2",
+        "nyholm/psr7-server": "^0.4.1",
+        "slim/psr7": "0.5",
+        "slim/slim": "^4",
+        "slim/slim-skeleton": "^4.0",
+        "psr/container": "^1.0",
+        "psr/http-message": "^1.0",
+        "psr/http-factory": "^1.0"
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^5.0"
     }
 }

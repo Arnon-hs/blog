@@ -16,17 +16,13 @@ Class CabinetController
         $userId= User::checkLogged();
         //Получаем инфу о пользователе из бд
         $user=User::getUserById($userId);
-        $firstname= $user['firstname'];
-        $secondname=$user['secondname'];
-        $lastname=$user['lastname'];
-        $password=$user['password'];
+        $firstname = $user['name'];
+        $password = $user['password'];
 
         $result=false;
 
         if(isset($_POST['submit'])){
-            $firstname=$_POST['firstname'];
-            $secondname=$_POST['secondname'];
-            $lastname=$_POST['lastname'];
+            $firstname=$_POST['name'];
             $password=$_POST['password'];
 
             $errors=false;

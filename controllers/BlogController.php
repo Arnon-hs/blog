@@ -14,10 +14,9 @@ class BlogController
     public function actionView($id)
     {
         if ($id) {
-            $newsItem = Blog::getNewsItemById($id);
+            $post = Blog::getBlogItemById($id);
             require_once(ROOT . '/views/blog/view.php');
         }
-
         return true;
     }
 
@@ -26,6 +25,7 @@ class BlogController
         $label='';
         $text='';
         $status='';
+        $tags = '';
         // Обработка формы
         if (isset($_POST['submit'])) {
             // Если форма отправлена
@@ -33,6 +33,7 @@ class BlogController
             $label = $_POST['label'];
             $text =  $_POST['text'];
             $status = $_POST['status'];
+            $tags = $_POST['tags'];
             $userId= User::checkLogged();
             $errors = false;
             // При необходимости можно валидировать значения нужным образом
@@ -44,7 +45,7 @@ class BlogController
                 // Если ошибок нет
                 // Добавляем пост
                 
-                Blog::createPost($label,$text,$status,$userId);
+                Blog::createPost($label,$text,$status,$userId,$tags);
                 header("Location: /");
                 // echo $postId;
                 // // Если запись добавлена

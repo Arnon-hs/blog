@@ -22,7 +22,7 @@
             
             <div class="col-lg-6 offset-lg-3 col-sm-12  mb-3">
                 <label>Имя</label>
-                <input type="text" class="form-control" value="<?php echo $firstname;?>" name="name">
+                <input type="text" class="form-control" value="<?php echo $name;?>" name="name">
                 
             </div>
         

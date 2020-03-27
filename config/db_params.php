@@ -1,4 +1,4 @@
-<!-- <?php
+<?php
 
 return array(
     'host' => 'localhost',
@@ -6,4 +6,4 @@ return array(
     'dbname' => 'db_blog',
     'user' => 'root',
     'password' => '',            
-);?> -->
+);

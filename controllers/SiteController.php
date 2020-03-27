@@ -5,13 +5,12 @@ class SiteController
 
     public function actionIndex()
     {
-        $cursor=User::findAllUser();
         $posts = Blog::getBlogList();
-        // Functions::dd($posts);
-        // $posts = array_reverse($posts);
+        $title = 'Блог';
         require_once(ROOT . '/views/site/index.php');
         return true;
     }
+
     public function actionAbout()
     {
         // Подключаем вид
@@ -23,4 +22,5 @@ class SiteController
         require_once(ROOT. '/views/info/services.php');
         return true;
     }
+
 }

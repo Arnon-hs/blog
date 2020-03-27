@@ -12,6 +12,7 @@
         "psr/http-factory": "^1.0"
     },
     "require-dev": {
-        "symfony/var-dumper": "^5.0"
+        "symfony/var-dumper": "^5.0",
+        "phpunit/phpunit": "^8.5"
     }
 }

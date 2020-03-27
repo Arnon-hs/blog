@@ -95,7 +95,9 @@ class User
     public static function checkLogged()
     {
         //если есть сессия вернем id
-        if(isset($_SESSION['user'])) return $_SESSION['user'];
+        if(isset($_SESSION['user'])) 
+            return $_SESSION['user'];
+            
         header("Location: /user/login/");
     }
     public static function isGuest()
@@ -123,8 +125,6 @@ class User
                 [ '_id' => new MongoDB\BSON\ObjectId($id) ],
                 [ '$set' => [ 'name' => "$name" ]]
             );
-            printf("Matched %d document(s)\n", $updateResult->getMatchedCount());
-            printf("Modified %d document(s)\n", $updateResult->getModifiedCount());
             return $updateResult;
     }
     public static function delete($id)
@@ -132,11 +132,30 @@ class User
         try{
             $db = Db::getConnection();
             $collection = $db->users;
-            $deleteResult = $collection->deleteOne(['_id' => new MongoDB\BSON\ObjectId($id)]);
-            return true;
+            $user = array(
+                '_id' => new MongoDB\BSON\ObjectId($id)
+            );
+            $cursor = $collection->findOne($user);
+            if($cursor->role != 1){
+                $deleteResult = $collection->deleteOne($user);
+                return true;
+            }
+            else{
+                echo 'Невозможно удалить! ';
+                return false;
+            } 
         }
         catch(Exception $e){
             return 'Ошибка: '. $e;
         }
+    }
+
+    public static function statistic()
+    {
+        $db = Db::getConnection();
+        $collection = $db->stat;
+        $cursor = $collection->find();
+        $array = iterator_to_array($cursor);
+        return $array;
     }
 }

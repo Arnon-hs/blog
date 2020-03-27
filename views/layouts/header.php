@@ -4,15 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="<?=$description?>">
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
   <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-responsive-min.css">
   <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.css">
   <link rel="stylesheet" href="/template/css/style.css">
   <link rel="shortcut icon" href="/template/images/icons/ico.png" type="image/png">
-  <title><?= $title? $title:'Мой блог';?></title>
+  <title><?= $title? $title:'Блог';?></title>
   <script src="/template/js/script.js"></script>
-  <!-- <script src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest"></script> -->
-  <!-- <script src="https://cdn.ckeditor.com/ckeditor5/17.0.0/classic/ckeditor.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest"></script> 
+  <script src="https://cdn.ckeditor.com/ckeditor5/17.0.0/classic/ckeditor.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
   <script>
       window.onload = function () {
         document.body.classList.add('loaded_hiding');

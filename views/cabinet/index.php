@@ -7,10 +7,11 @@
         </div>
 
         <div class="pure-u-1-1">    
-            <ul class=" list-unstyled h_m">
+            <ul class="list-unstyled h_m">
                 <li><a href="/post/create"><img src="/template/images/icons/icons8-edit-50.png">Добавить пост</a></li>
                 <li><a href="/cabinet/edit"><img src="/template/images/icons/icons8-edit-50.png">Редактировать личные данные</a></li>
-                <li><a href="/user/history"><img src="/template/images/icons/icons8-order-history-50.png"> История заказов</a></li>
+                <li><a href="/cabinet/history"><img src="/template/images/icons/icons8-order-history-50.png">История публикаций</a></li>
+                <li><a href="/cabinet/stat"><img src="/template/images/icons/icons8-order-history-50.png">Статистика</a></li>
             </ul>
         </div>
     </div>

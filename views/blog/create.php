@@ -1,4 +1,6 @@
 <?php include ROOT . '/views/layouts/header.php'; ?>
+
+
 <div id="editorjs"></div>
 
 <button id="save-button">Save</button>

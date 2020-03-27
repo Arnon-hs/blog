@@ -33,7 +33,8 @@ class BlogController
             $label = $_POST['label'];
             $text =  $_POST['text'];
             $status = $_POST['status'];
-            $tags = $_POST['tags'];
+            $tags = $_POST['hiddenTags'];
+            var_dump($tags);
             $userId= User::checkLogged();
             $errors = false;
             // При необходимости можно валидировать значения нужным образом

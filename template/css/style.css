@@ -883,3 +883,50 @@ footer.content{
 #deleteTag{
     padding-left: 0.5rem;
 }
+
+.content.cabinet{
+    display: flex;
+
+    flex-direction: column;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    align-items: center;
+
+    width: -moz-available;
+}
+.content.cabinet .pure-form.pure-form-stacked{
+    display: inline-flex;
+    
+    flex-wrap: wrap;
+    
+    justify-content: center;
+    
+    align-items: center;
+}
+.content.cabinet .pure-form.pure-form-stacked .ck.ck-editor{
+    position: relative;
+
+    width: 100%;
+
+    margin-bottom: 20px;
+}
+.cabinet .pure-form-stacked #state{
+    margin-right: 20px;
+}
+#saveTag{
+    position: relative;
+    width: max-content;
+    left: -20px;
+}
+.simplecolorpicker.icon{
+    width: 50px;
+}
+.tag.tag__simple span{
+    padding-left: 10px;
+}
+.sbmt{
+    margin-top:1rem
+}

@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="jquery.simplecolorpicker.css"> -->
 <script src="https://cdn.jsdelivr.net/npm/jquery-simplecolorpicker@0.3.1/jquery.simplecolorpicker.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-simplecolorpicker@0.3.1/jquery.simplecolorpicker.css">
-    <div class="content">
+    <div class="content cabinet">
         <?php if (isset($errors) && is_array($errors)): ?>
             <div class="pure-u-1">
                 <ul class="text-center">
@@ -15,13 +15,13 @@
         <?php endif; ?>
 
         <h1>Добавить пост</h1>
-        <form action="create" method="post" class="pure-form pure-form-stacked">
+        <form method="post" class="pure-form pure-form-stacked">
             <textarea id="editorLabel"  name="label">
-                <p>Enter label here.</p>
+                <p></p>
             </textarea>
             <br>
-            <textarea id="editor"  name="text">
-                <p>This is some sample content.</p>
+            <textarea id="editor" name="text">
+                <p></p>
             </textarea>
             <br>
             <select name="status" id="state">
@@ -30,7 +30,8 @@
             </select>
             <br>
             <input type="text" name="tags" id="tags">
-            <span id="saveTag">C</span>
+            <input type="text" name="hiddenTags" id="hTags" style="display:none;">
+            <span id="saveTag">S</span>
             <select name="colorpicker">
                 <option value="#7bd148">Green</option>
                 <option value="#5484ed">Bold blue</option>
@@ -45,33 +46,49 @@
                 <option value="#dbadff">Purple</option>
                 <option value="#e1e1e1">Gray</option>
             </select>
+            <div class="break" style="break-after: always;"></div>
             <ul id="tag__wrapper"></ul>
-            <br>
-            <br>
-            <br>
-            <p><input type="submit" value="Сохранить" name="submit" class="pure-button"></p>
+            <div class="break" style="break-after: always;"></div>
+            <p><input type="submit" value="Сохранить" name="submit" class="pure-button sbmt"></p>
         </form>
     </div>
     <script>
+   // $('.sbmt').on("click", function(){
+        //let tagsName = $('.tag').val();
+       // let mass = [];
+        //$('.tag').each(function(index){
+        //    mass.push(this)});
+        //console.log(mass);
+   // });
+    
+
     $('#saveTag').on('click', function(){
         let tagName = $('#tags').val();
         let color = $('select[name="colorpicker"]').val();
-        var newdiv = document.createElement("li");
-        newdiv.innerHTML = "<div class='tag tag__simple' name='tag' style='background-color:"+color+"'>"+tagName+"<span id='deleteTag'>X</span></div>";
-        //newdiv.appendTo('div#quest');
+        let newdiv = document.createElement("li");
+        let h = document.getElementById("hTags");
+
+        newdiv.innerHTML = "<div class='tag tag__simple' name='tag' style='background-color:"+color+"'>"+tagName+"<span name='deleteTag'>X</span></div>";
+
+        h.innerText += tagName +':'+ color + ' ';
         document.getElementById("tag__wrapper").appendChild(newdiv);
         $('#tags').val('');
-        
-        // var els = document.getElementById("deleteTag");
-        //     els.addEventListener("click", function(){
-        //         els.parentNode.removeChild(els.parentNode);
-        //     });
-        var elem =  document.getElementById('deleteTag');
-        elem.addEventListener('click', function(e) { 
-            var dsf = e.target.parentNode;
-            elem.removeChild(dsf);
-        });
+
+        deleteTag(h);
     });
+
+    function deleteTag(h){
+        var els = document.getElementsByName("deleteTag");
+        els.forEach(function(item) {
+            item.addEventListener("click", function(){
+                item.parentNode.parentNode.removeChild(item.parentNode);
+                var d = item.parentNode.innerText.substring(0, item.parentNode.innerText.length - 1);
+                h.innerText = h.innerText.replace(d+' ', '');
+                console.log(d, h.innerText);
+            });
+        });
+    }
+
 
     $('select[name="colorpicker"]').simplecolorpicker();
     $('select[name="colorpicker"]').simplecolorpicker('selectColor', '#7bd148');
@@ -90,6 +107,7 @@
     </script>
 
 <?php include ROOT . '/views/layouts/footer.php'; ?>
-<?// $data = $_POST['content'];
+<?
+// $data = $_POST['content'];
 //$data = str_replace( '&', '&amp;', $_POST[ 'content' ] );
 //var_dump($data);

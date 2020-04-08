@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="/template/css/style.css">
   <link rel="shortcut icon" href="/template/images/icons/ico.png" type="image/png">
   <title><?= $title? $title:'Блог';?></title>
+  
   <script src="/template/js/script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest"></script> 
   <script src="https://cdn.ckeditor.com/ckeditor5/17.0.0/classic/ckeditor.js"></script>
@@ -35,6 +36,14 @@
           </path>
         </svg>
     </div>
+  <div id="particles_js"></div>
+  <script src="/template/js/particles.js"></script>
+  <script>
+    /* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
+    particlesJS.load('particles_js', 'json/particles.json', function() {
+        console.log('callback - particles.js config loaded');
+      });
+  </script>
   <div id="layout" class="pure-g">
     <div class="sidebar pure-u-1-4 pure-u-md-1-4">
         <div class="login">

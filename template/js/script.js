@@ -149,3 +149,8 @@ function updateStatus( editor ) {
 // } else {
 //   alert("Ошибка HTTP: " + response.status);
 // }
+
+/* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
+particlesJS.load('particles_js', 'json/particles.json', function() {
+    console.log('callback - particles.js config loaded');
+  });

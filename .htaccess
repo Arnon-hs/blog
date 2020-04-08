@@ -2,9 +2,12 @@ AddDefaultCharset utf-8
 ErrorDocument 404 /views/404/err404.html
 RewriteEngine on
 RewriteBase /
+
 php_value display_errors 1
 php_value display_startup_errors 1
 php_value error_reporting E_ALL
+
+
 
 # 1 Month for most static assets
 <filesMatch ".(css|jpg|jpeg|png|gif|js|ico)$">
